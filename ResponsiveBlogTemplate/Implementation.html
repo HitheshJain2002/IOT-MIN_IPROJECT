@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="imple.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <h3>Implementation</h3>
+            <p>Implementation includes hardware as well as software connections <br>
+                • Hardware implementations: <br>
+                It involves connection of DHT 11 and LDR sensors to respective pins of ESP 32. <br>
+                • Software implementations: <br>
+                It involves implementation of code and connecting it to blynk interface.</p>
+            <h3>code</h3>
+            <p id="code">
+                #define BLYNK_PRINT Serial <br>
+                #define BLYNK_TEMPLATE_ID "TMPL3ipIs2nB9" <br>
+                #define BLYNK_TEMPLATE_NAME "smart home" <br>
+                #define BLYNK_AUTH_TOKEN "bSwPpp-RQ28IqjeCkBMYjxKWK6cRFVMG" <br>
+                #include <WiFi.h> <br>
+                    #include <WiFiClient.h> <br>
+                        #include <BlynkSimpleEsp32.h> <br>
+                            #include <DHT.h> <br>
+                                // Your WiFi credentials. <br>
+                                char ssid[] = "POCO"; <br>
+                                char pass[] = "12345678"; <br>
+                                BlynkTimer timer; <br>
+                                //sensor pins <br>
+                                #define DHTPIN 27 <br>
+                                #define DHTTYPE DHT11 <br>
+                                DHT dht(DHTPIN,DHTTYPE); <br>
+                                #define LDR_PIN 34 <br>
+                                //virtual pins <br>
+                                #define VPIN_TEMPERATURE V0 <br>
+                                #define VPIN_HUMIDITY V1 <br>
+                                #define VPIN_LDR V2 <br>
+                                float temperature1 = 0; <br>
+                                float humidity1 = 0; <br>
+                                float ldrVal = 0; <br>
+                                void readSensor() { <br>
+                                ldrVal = map(analogRead(LDR_PIN), 400, 4200, 0, 100); <br>
+                                Serial.print("LDR - "); Serial.println(ldrVal); <br>
+                                float h = dht.readHumidity(); <br>
+                                float t = dht.readTemperature(); <br>
+                                if (isnan(h) || isnan(t)) { <br>
+                                Serial.println("Failed to read from DHT sensor!"); <br>
+                                return; <br>
+                                } <br>
+                                else { <br>
+                                7 <br>
+                                humidity1 = h; <br>
+                                temperature1 = t; <br>
+                                Serial.print("Temperature - "); Serial.println(t); <br>
+                                Serial.print("Humidity - "); Serial.println(h); <br>
+                                } <br>
+                                } <br>
+                                void sendSensor() <br>
+                                { <br>
+                                readSensor(); <br>
+                                Blynk.virtualWrite(VPIN_TEMPERATURE, temperature1); <br>
+                                Blynk.virtualWrite(VPIN_HUMIDITY, humidity1); <br>
+                                Blynk.virtualWrite(VPIN_LDR, ldrVal); <br>
+                                } <br>
+                                void setup() <br>
+                                { <br>
+                                Serial.begin(115200); <br>
+                                Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass); <br>
+                                dht.begin(); <br>
+                                timer.setInterval(1000L, sendSensor); <br>
+                                } <br>
+                                void loop() <br>
+                                { <br>
+                                Blynk.run(); <br>
+                                timer.run(); <br>
+                                }
+
+            </p>
+            <h3>Result</h3>
+            <img src="./img/blynk.png" width="450px" style="margin-left:300px" alt="">
+        </div>
+    </div>
+
+</body>
+
+</html>

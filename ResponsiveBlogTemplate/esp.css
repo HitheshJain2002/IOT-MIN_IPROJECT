@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500&display=swap");
+:root { 
+  --main-bg-color: #bd6418;
+  --font1: "Baloo Bhaina 2", cursive;
+  --font2: "Roboto", sans-serif;
+}
+
+
+*{
+    padding: 0px;
+    margin: 0%;
+}
+
+.imgcontainer img{
+   margin-left: 40%;
+   margin-top: 30px;
+   margin-right: 40%;
+}
+.imgcontainer h2{
+    font-family: var(--font1);
+}
+.infocontainer{
+    font-size: 18px;
+    text-align: center;
+    font-family: var(--font2);
+}
+.container{
+    border:2px solid red;
+    width: 75%;
+    margin: auto;
+    margin-top: 4px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 8px gray;
+    margin-bottom: 20px;
+
+}
+
+
+
+
+.imgcontainer2 img{
+    margin-left: 40%;
+    margin-top: 30px;
+    margin-right: 40%;
+ }
+ .imgcontainer2 h2{
+     font-family: var(--font1);
+ }
+ .infocontainer2{
+     font-size: 18px;
+     text-align: center;
+     font-family: var(--font2);
+ }
+ .container2{
+     border:2px solid red;
+     width: 75%;
+     margin: auto;
+     margin-top: 4px;
+     padding: 10px;
+     border-radius: 15px;
+     box-shadow: 3px 3px 8px gray;
+     margin-bottom: 20px;
+ 
+ }
+
+
+
+ .imgcontainer3 img{
+    margin-left: 40%;
+    margin-top: 30px;
+    margin-right: 40%;
+ }
+ .imgcontainer3 h2{
+     font-family: var(--font1);
+ }
+ .infocontainer3{
+     font-size: 18px;
+     text-align: center;
+     font-family: var(--font2);
+ }
+ .container3{
+     border:2px solid red;
+     width: 75%;
+     margin: auto;
+     margin-top: 4px;
+     padding: 10px;
+     border-radius: 15px;
+     box-shadow: 3px 3px 8px gray;
+     margin-bottom: 20px;
+ 
+ }
